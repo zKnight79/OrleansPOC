@@ -1,10 +1,6 @@
-using OrleansPOC.ServerWorker;
-
-IHost host = Host.CreateDefaultBuilder(args)
-    .ConfigureServices(services =>
+await Host.CreateDefaultBuilder(args)
+    .UseOrleans(siloBuilder =>
     {
-        services.AddHostedService<Worker>();
+        siloBuilder.UseLocalhostClustering();
     })
-    .Build();
-
-host.Run();
+    .RunConsoleAsync();

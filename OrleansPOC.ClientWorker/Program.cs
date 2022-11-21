@@ -1,10 +1,13 @@
 using OrleansPOC.ClientWorker;
 
-IHost host = Host.CreateDefaultBuilder(args)
+await Host.CreateDefaultBuilder(args)
+    .UseOrleansClient(clientBuilder =>
+    {
+        clientBuilder.UseLocalhostClustering();
+    })
     .ConfigureServices(services =>
     {
         services.AddHostedService<Worker>();
+        services.Configure<ConsoleLifetimeOptions>(options => options.SuppressStatusMessages= true);
     })
-    .Build();
-
-host.Run();
+    .RunConsoleAsync();
