@@ -10,7 +10,7 @@ public class ProductGrain : LoggableGrain<ProductGrain>, IProduct
     private readonly IPersistentState<ProductState> _productState;
 
     public ProductGrain(
-        [PersistentState(stateName: "productState")] IPersistentState<ProductState> productState,
+        [PersistentState(stateName: nameof(ProductState))] IPersistentState<ProductState> productState,
         ILogger<ProductGrain> logger
     ) : base(logger)
     {
