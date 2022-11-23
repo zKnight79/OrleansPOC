@@ -1,3 +1,5 @@
+using Orleans.Configuration;
+
 await Host.CreateDefaultBuilder(args)
     .UseOrleans((ctx, siloBuilder) =>
     {
@@ -17,6 +19,12 @@ await Host.CreateDefaultBuilder(args)
                 siloBuilder.UseMongoDBClustering(options =>
                 {
                     options.DatabaseName = mongoDN;
+                });
+                siloBuilder.Configure<ClusterMembershipOptions>(options =>
+                {
+                    options.DefunctSiloCleanupPeriod = TimeSpan.FromSeconds(30);
+                    options.DefunctSiloExpiration = TimeSpan.FromSeconds(30);
+                    options.TableRefreshTimeout = TimeSpan.FromMinutes(5);
                 });
             }
             else
