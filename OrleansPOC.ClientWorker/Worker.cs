@@ -17,10 +17,10 @@ namespace OrleansPOC.ClientWorker
         private static void ShowHelp()
         {
             Console.WriteLine("Commands :");
-            Console.WriteLine($"- {CommandHelper.QUIT_HELP_SYNTAX}");
-            Console.WriteLine($"- {CommandHelper.HELP_HELP_SYNTAX}");
-            Console.WriteLine($"- {CommandHelper.HELLO_HELP_SYNTAX}");
-            Console.WriteLine($"- {CommandHelper.PRODUCT_HELP_SYNTAX}");
+            foreach (string syntax in CommandHelper.GetCommandHelpSyntaxes())
+            {
+                Console.WriteLine($"- {syntax}");
+            }
         }
 
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)

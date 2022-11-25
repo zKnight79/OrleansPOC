@@ -10,10 +10,18 @@ internal static partial class CommandHelper
     private const string NAME_ARG = "name";
     private const string CODE_ARG = "code";
 
-    public const string QUIT_HELP_SYNTAX = $"`{QUIT_CMD}` to exit";
-    public const string HELP_HELP_SYNTAX = $"`{HELP_CMD}` to show help";
-    public const string HELLO_HELP_SYNTAX = $"`{HELLO_CMD} <{NAME_ARG}>` to use the Hello Grain";
-    public const string PRODUCT_HELP_SYNTAX = $"`{PRODUCT_CMD} <{CODE_ARG}> <{NAME_ARG}>` to use the Product Grain";
+    private const string QUIT_HELP_SYNTAX = $"`{QUIT_CMD}` to exit";
+    private const string HELP_HELP_SYNTAX = $"`{HELP_CMD}` to show help";
+    private const string HELLO_HELP_SYNTAX = $"`{HELLO_CMD} <{NAME_ARG}>` to use the Hello Grain";
+    private const string PRODUCT_HELP_SYNTAX = $"`{PRODUCT_CMD} <{CODE_ARG}> <{NAME_ARG}>` to use the Product Grain";
+
+    public static IEnumerable<string> GetCommandHelpSyntaxes()
+    {
+        yield return QUIT_HELP_SYNTAX;
+        yield return HELP_HELP_SYNTAX;
+        yield return HELLO_HELP_SYNTAX;
+        yield return PRODUCT_HELP_SYNTAX;
+    }
 
     [GeneratedRegex($"{QUIT_CMD}")] private static partial Regex QuitCommandRegex();
     [GeneratedRegex($"{HELP_CMD}")] private static partial Regex HelpCommandRegex();
