@@ -30,16 +30,16 @@ internal static partial class CommandHelper
 
     public static bool ParseQuitCommand(this string cmd)
     {
-        Match match = CommandHelper.QuitCommandRegex().Match(cmd);
+        Match match = QuitCommandRegex().Match(cmd);
         return match.Success;
     }
     public static bool ParseHelloCommand(this string cmd, out string name)
     {
         bool result = false;
 
-        if (CommandHelper.HelloCommandRegex().Match(cmd) is { Success: true } matchHello)
+        if (HelloCommandRegex().Match(cmd) is { Success: true } matchHello)
         {
-            name = matchHello.Groups[CommandHelper.NAME_ARG].Value;
+            name = matchHello.Groups[NAME_ARG].Value;
             result = true;
         }
         else
@@ -51,17 +51,17 @@ internal static partial class CommandHelper
     }
     public static bool ParseHelpCommand(this string cmd)
     {
-        Match match = CommandHelper.HelpCommandRegex().Match(cmd);
+        Match match = HelpCommandRegex().Match(cmd);
         return match.Success;
     }
     public static bool ParseProductCommand(this string cmd, out string code, out string name)
     {
         bool result = false;
 
-        if (CommandHelper.ProductCommandRegex().Match(cmd) is { Success: true } matchProd)
+        if (ProductCommandRegex().Match(cmd) is { Success: true } matchProd)
         {
-            code = matchProd.Groups[CommandHelper.CODE_ARG].Value;
-            name = matchProd.Groups[CommandHelper.NAME_ARG].Value;
+            code = matchProd.Groups[CODE_ARG].Value;
+            name = matchProd.Groups[NAME_ARG].Value;
             result = true;
         }
         else

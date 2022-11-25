@@ -33,7 +33,7 @@ await Host.CreateDefaultBuilder(args)
             }
             siloBuilder.AddMongoDBGrainStorageAsDefault(options =>
             {
-                options.DatabaseName= mongoDN;
+                options.DatabaseName = mongoDN;
             });
         }
     })

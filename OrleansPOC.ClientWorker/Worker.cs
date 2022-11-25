@@ -1,5 +1,4 @@
 using OrleansPOC.GrainInterfaces;
-using System.Text.RegularExpressions;
 
 namespace OrleansPOC.ClientWorker
 {
@@ -26,7 +25,7 @@ namespace OrleansPOC.ClientWorker
         protected override async Task ExecuteAsync(CancellationToken stoppingToken)
         {
             await Task.Delay(1000, stoppingToken);
-            
+
             ShowHelp();
 
             while (!stoppingToken.IsCancellationRequested)

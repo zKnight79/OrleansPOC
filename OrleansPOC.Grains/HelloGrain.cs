@@ -13,7 +13,7 @@ public class HelloGrain : LoggableGrain<HelloGrain>, IHello
     public Task<string> SayHello(string name)
     {
         Log($"SayHello({name})");
-        
+
         string greetings = $"Hello, {name} !";
 
         return Task.FromResult(greetings);
